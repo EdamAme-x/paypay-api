@@ -185,7 +185,7 @@ export default function Index() {
                         <div data-v-1264247b="" className="label">
                           決済番号
                         </div>
-                        <div data-v-1264247b="" className="id value">
+                        <div data-v-1264247b="" className="id value id-x">
                           <span data-v-1264247b="" className="id-num">
                             {"0" + Date.now().toString()}
                           </span>
