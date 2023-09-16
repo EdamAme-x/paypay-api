@@ -38,7 +38,8 @@
   border: none;
 }
 
-.pass-x {
+.pass-x > form {
+  display: flex;
   flex-direction: column;
 }
 

