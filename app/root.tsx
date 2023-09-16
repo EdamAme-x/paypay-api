@@ -16,10 +16,12 @@ export const links: LinksFunction = () => [
 
 export default function App() {
   return (
-    <html lang="en">
+    <html lang="ja">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="shortcut icon" href="https://paypay.ne.jp/uploads/2022/03/cropped-cropped-paypay-32x32.png" />
+        <link rel="stylesheet" href="/main.css" />
         <Meta />
         <Links />
       </head>
@@ -32,3 +34,4 @@ export default function App() {
     </html>
   );
 }
+
