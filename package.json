@@ -5,11 +5,11 @@
     "build": "remix build",
     "deploy": "deployctl deploy --prod --include=build,public --project=paypay-api ./build/index.js",
     "dev": "npm-run-all build --parallel \"dev:*\"",
-    "dev:deno": "cross-env NODE_ENV=development deno run --unstable --watch --allow-net --allow-read --allow-env ./build/index.js",
+    "dev:deno": "node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development deno run --unstable --watch --allow-net --allow-read --allow-env ./build/index.js",
     "dev:remix": "remix watch",
     "format": "deno fmt --ignore=node_modules,build,public/build",
     "lint": "deno lint --ignore=node_modules,build,public/build",
-    "start": "cross-env NODE_ENV=production deno run --unstable --allow-net --allow-read --allow-env ./build/index.js",
+    "start": "node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production deno run --unstable --allow-net --allow-read --allow-env ./build/index.js",
     "typecheck": "deno check"
   },
   "dependencies": {
